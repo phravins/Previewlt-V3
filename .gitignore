@@ -1,0 +1,23 @@
+# FrontEnd
+node_modules/
+dist/
+.env*
+.DS_Store
+previewit_svelte/node_modules/
+previewit_svelte/.svelte-kit/
+previewit_svelte/dist/
+
+# BackEnd
+PreviewIt.Server/bin/
+PreviewIt.Server/obj/
+*.dll
+*.exe
+*.pdb
+*.user
+
+# Editor
+.vscode/
+.vs/
+*.suo
+*.userosscache
+*.sln.docstates
