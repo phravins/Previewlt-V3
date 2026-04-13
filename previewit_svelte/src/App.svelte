@@ -1,17 +1,15 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, setContext } from 'svelte';
   import Navbar from './lib/components/Navbar.svelte';
-  import Hero from './lib/components/Hero.svelte';
-  import LogosStrip from './lib/components/LogosStrip.svelte';
-  import HowItWorks from './lib/components/HowItWorks.svelte';
-  import Features from './lib/components/Features.svelte';
-  import Converter from './lib/components/Converter.svelte';
-  import Stats from './lib/components/Stats.svelte';
-  import Testimonials from './lib/components/Testimonials.svelte';
-  import Cta from './lib/components/Cta.svelte';
+  import Home from './lib/pages/Home.svelte';
+  import Preview from './lib/pages/Preview.svelte';
+  import Convert from './lib/pages/Convert.svelte';
+  import Docs from './lib/pages/Docs.svelte';
+  import Changelog from './lib/pages/Changelog.svelte';
   import Footer from './lib/components/Footer.svelte';
   import Toast from './lib/components/Toast.svelte';
 
+  let activePage = $state('home');
   let toastMessage = $state("");
   let showToastFlag = $state(false);
   let toastTimer: ReturnType<typeof setTimeout>;
@@ -25,8 +23,14 @@
     }, 2400);
   }
 
-  onMount(() => {
-    // Reveal Observer for scroll animations
+  // Provide changePage function globally
+  setContext('changePage', (page: string) => {
+    activePage = page;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (page === 'home') setTimeout(initReveal, 100);
+  });
+
+  function initReveal() {
     const obs = new IntersectionObserver(es => {
       es.forEach(e => {
         if (e.isIntersecting) {
@@ -36,7 +40,7 @@
       });
     }, { threshold: .1 });
     
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
     
     // Initial delays for hero elements
     setTimeout(() => {
@@ -44,17 +48,29 @@
         setTimeout(() => el.classList.add('visible'), i * 100 + 80);
       });
     }, 80);
+  }
+
+  onMount(() => {
+    initReveal();
   });
 </script>
 
-<Navbar />
-<Hero />
-<LogosStrip />
-<HowItWorks />
-<Features {showToast} />
-<Converter {showToast} />
-<Stats />
-<Testimonials />
-<Cta />
+<Navbar {activePage} />
+
+<main id="app">
+  {#if activePage === 'home'}
+    <Home {showToast} />
+  {:else if activePage === 'preview'}
+    <Preview />
+  {:else if activePage === 'convert'}
+    <Convert {showToast} />
+  {:else if activePage === 'docs'}
+    <Docs />
+  {:else if activePage === 'changelog'}
+    <Changelog />
+  {/if}
+</main>
+
 <Footer />
 <Toast message={toastMessage} show={showToastFlag} />
+
