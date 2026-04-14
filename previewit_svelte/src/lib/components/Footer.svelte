@@ -1,3 +1,8 @@
+<script lang="ts">
+  import { getContext } from 'svelte';
+  const changePage = getContext<((page: string) => void)>('changePage');
+</script>
+
 <footer>
   <a class="foot-logo" href="#">
     <div class="nav-mark" style="width:28px;height:28px">
@@ -8,12 +13,17 @@
     <span class="nav-wordmark" style="font-size:14px">PreviewIt</span>
   </a>
   <div class="foot-links">
-    <a href="#" class="foot-link">Preview</a>
-    <a href="#" class="foot-link">Converter</a>
-    <a href="#" class="foot-link">Docs</a>
-    <a href="#" class="foot-link">GitHub</a>
-    <a href="#" class="foot-link">Changelog</a>
-    <a href="#" class="foot-link">Privacy</a>
+    <!-- svelte-ignore a11y_invalid_attribute -->
+    <a href="javascript:void(0)" class="foot-link" onclick={() => changePage('get-started')}>Preview</a>
+    <!-- svelte-ignore a11y_invalid_attribute -->
+    <a href="javascript:void(0)" class="foot-link" onclick={() => changePage('get-started')}>Converter</a>
+    <!-- svelte-ignore a11y_invalid_attribute -->
+    <a href="javascript:void(0)" class="foot-link" onclick={() => changePage('docs')}>Docs</a>
+    <a href="https://github.com/phravins/Previewlt-V3" target="_blank" rel="noopener noreferrer" class="foot-link">GitHub</a>
+    <!-- svelte-ignore a11y_invalid_attribute -->
+    <a href="javascript:void(0)" class="foot-link" onclick={() => changePage('changelog')}>Changelog</a>
+    <!-- svelte-ignore a11y_invalid_attribute -->
+    <a href="javascript:void(0)" class="foot-link" onclick={() => changePage('privacy')}>Privacy</a>
   </div>
   <div class="foot-copy">© 2025 PreviewIt · MIT Licensed</div>
 </footer>
