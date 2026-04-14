@@ -1,12 +1,11 @@
 <script lang="ts">
+  import Logo from '../components/Logo.svelte';
 </script>
 
 <div class="page page-signin active" style="min-height: calc(100vh - 140px); display:flex; align-items:center; justify-content:center; padding: 40px;">
   <div class="signin-card">
-    <div class="nav-mark" style="width:36px;height:36px; margin: 0 auto 24px;">
-      <svg viewBox="0 0 18 18" style="width:16px;height:16px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
-        <polyline points="3,9 7,13 15,5"/>
-      </svg>
+    <div style="display: flex; justify-content: center; margin-bottom: 24px;">
+      <Logo style="height: 32px; width: auto; color: var(--ink);" />
     </div>
     <h2>Welcome back</h2>
     <p>Sign in to your PreviewIt account to sync your conversion history and save your custom API keys natively.</p>
