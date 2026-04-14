@@ -65,7 +65,10 @@
       const Babel = (window as any).Babel;
       if (!Babel) return;
 
-      const opts: any = { presets: [] };
+      const opts: any = { 
+        presets: [],
+        filename: `temp.${from.id.toLowerCase()}`
+      };
       if (from.id === 'TS' || from.id === 'TSX') opts.presets.push('typescript');
       if (from.id === 'TSX' || from.id === 'JSX' || from.id === 'JS') opts.presets.push('react');
       
