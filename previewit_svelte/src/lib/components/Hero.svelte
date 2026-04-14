@@ -6,6 +6,7 @@
   
   let showAiModal = $state(false);
   let apiKey = $state("");
+  let aiProvider = $state("openai");
 
   const changePage = getContext<((page: string) => void)>('changePage');
 
@@ -131,12 +132,25 @@
     <div class="modal-box">
       <div class="modal-icon">✨</div>
       <h3 class="modal-title">AI Conversion Engine</h3>
-      <p class="modal-desc">To unlock advanced AI-powered language-to-language translation paths, please enter your secure API Key.</p>
+      <p class="modal-desc">To unlock advanced AI language translation pipelines, select your AI provider and enter your secure API Key.</p>
       
+      <div style="font-size:11px; font-weight:700; color:var(--faint); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px">Select Engine</div>
+      <select class="modal-input" bind:value={aiProvider} style="margin-bottom:16px; cursor:pointer;-webkit-appearance:none;background-image:url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23999%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:right%2014px%20top%2050%%;background-size:10px%20auto;">
+        <option value="openai">OpenAI (GPT-4o)</option>
+        <option value="claude">Anthropic Claude</option>
+        <option value="gemini">Google Gemini</option>
+        <option value="ollama">Ollama (Local / Open Source)</option>
+        <option value="deepseek">DeepSeek (Coder)</option>
+        <option value="kimi">Moonshot Kimi</option>
+        <option value="grok">xAI Grok</option>
+        <option value="qwen">Alibaba Qwen</option>
+      </select>
+
+      <div style="font-size:11px; font-weight:700; color:var(--faint); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px">API Key</div>
       <input 
         type="password" 
         class="modal-input" 
-        placeholder="Enter API Key (e.g. sk-...)" 
+        placeholder={aiProvider === 'ollama' ? 'Leave blank for default local port 11434' : 'Enter API Key (e.g. sk-...)'}
         bind:value={apiKey}
       />
       
