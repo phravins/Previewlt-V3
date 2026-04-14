@@ -1,16 +1,12 @@
 <script lang="ts">
   import { getContext } from 'svelte';
+  import Logo from './Logo.svelte';
   const changePage = getContext<((page: string) => void)>('changePage');
 </script>
 
 <footer>
-  <a class="foot-logo" href="#">
-    <div class="nav-mark" style="width:28px;height:28px">
-      <svg viewBox="0 0 18 18" style="width:13px;height:13px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">
-        <polyline points="3,9 7,13 15,5"/>
-      </svg>
-    </div>
-    <span class="nav-wordmark" style="font-size:14px">PreviewIt</span>
+  <a class="foot-logo" href="#" onclick={() => changePage('home')} style="display: flex; align-items: center; margin-bottom: 24px;">
+    <Logo style="height: 24px; width: auto; color: var(--ink);" />
   </a>
   <div class="foot-links">
     <!-- svelte-ignore a11y_invalid_attribute -->
