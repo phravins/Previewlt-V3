@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount, getContext } from 'svelte';
+    import Logo from './Logo.svelte';
     
     let isScrolled = $state(false);
     let isDark = $state(false);
@@ -30,11 +31,8 @@
 </script>
 
 <nav id="nav" class:scrolled={isScrolled}>
-  <a class="nav-logo" href="#">
-    <div class="nav-mark">
-      <svg viewBox="0 0 18 18"><polyline points="3,9 7,13 15,5"/></svg>
-    </div>
-    <span class="nav-wordmark">PreviewIt</span>
+  <a class="nav-logo" href="#" onclick={() => changePage('home')} style="display: flex; align-items: center;">
+    <Logo style="height: 28px; width: auto; color: var(--ink);" />
   </a>
   <div class="nav-links">
     <!-- svelte-ignore a11y_missing_attribute -->
