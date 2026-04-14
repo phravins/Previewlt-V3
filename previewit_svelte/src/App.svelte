@@ -2,8 +2,7 @@
   import { onMount, setContext } from 'svelte';
   import Navbar from './lib/components/Navbar.svelte';
   import Home from './lib/pages/Home.svelte';
-  import Preview from './lib/pages/Preview.svelte';
-  import Convert from './lib/pages/Convert.svelte';
+  import GetStarted from './lib/pages/GetStarted.svelte';
   import Docs from './lib/pages/Docs.svelte';
   import Changelog from './lib/pages/Changelog.svelte';
   import Footer from './lib/components/Footer.svelte';
@@ -60,10 +59,8 @@
 <main id="app">
   {#if activePage === 'home'}
     <Home {showToast} />
-  {:else if activePage === 'preview'}
-    <Preview />
-  {:else if activePage === 'convert'}
-    <Convert {showToast} />
+  {:else if activePage === 'get-started'}
+    <GetStarted {showToast} />
   {:else if activePage === 'docs'}
     <Docs />
   {:else if activePage === 'changelog'}
