@@ -44,14 +44,6 @@
     <!-- svelte-ignore a11y_missing_attribute -->
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <a class="nav-link {activePage === 'preview' ? 'active' : ''}" onclick={() => changePage('preview')}>Preview</a>
-    <!-- svelte-ignore a11y_missing_attribute -->
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <a class="nav-link {activePage === 'convert' ? 'active' : ''}" onclick={() => changePage('convert')}>Convert</a>
-    <!-- svelte-ignore a11y_missing_attribute -->
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
     <a class="nav-link {activePage === 'docs' ? 'active' : ''}" onclick={() => changePage('docs')}>Docs</a>
     <!-- svelte-ignore a11y_missing_attribute -->
     <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -70,6 +62,6 @@
     </button>
     <div class="nav-pill"><div class="nav-pill-dot"></div>v1.0 beta</div>
     <button class="btn-sign">Sign in</button>
-    <button class="btn-start">Get started <span class="arr">→</span></button>
+    <button class="btn-start" onclick={() => changePage('get-started')}>Get started <span class="arr">→</span></button>
   </div>
 </nav>
