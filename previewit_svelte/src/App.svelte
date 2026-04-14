@@ -5,6 +5,7 @@
   import GetStarted from './lib/pages/GetStarted.svelte';
   import Docs from './lib/pages/Docs.svelte';
   import Changelog from './lib/pages/Changelog.svelte';
+  import Privacy from './lib/pages/Privacy.svelte';
   import Footer from './lib/components/Footer.svelte';
   import Toast from './lib/components/Toast.svelte';
 
@@ -65,6 +66,8 @@
     <Docs />
   {:else if activePage === 'changelog'}
     <Changelog />
+  {:else if activePage === 'privacy'}
+    <Privacy />
   {/if}
 </main>
 
