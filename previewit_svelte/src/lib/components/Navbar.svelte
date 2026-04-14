@@ -61,7 +61,7 @@
       {/if}
     </button>
     <div class="nav-pill"><div class="nav-pill-dot"></div>v1.0 beta</div>
-    <button class="btn-sign">Sign in</button>
+    <button class="btn-sign" onclick={() => changePage('sign-in')}>Sign in</button>
     <button class="btn-start" onclick={() => changePage('get-started')}>Get started <span class="arr">→</span></button>
   </div>
 </nav>
