@@ -3,6 +3,9 @@
   
   let hmc = $state(8);
   let scaleStyle = $state("");
+  
+  let showAiModal = $state(false);
+  let apiKey = $state("");
 
   const changePage = getContext<((page: string) => void)>('changePage');
 
@@ -32,7 +35,7 @@
       </p>
       <div class="hero-ctas reveal d2">
         <button class="hero-cta-p" onclick={() => changePage('get-started')}>Open preview tool →</button>
-        <button class="hero-cta-s" onclick={() => changePage('get-started')}>✦ Try the converter</button>
+        <button class="hero-cta-s" onclick={() => showAiModal = true}>✦ Try the converter</button>
       </div>
       <div class="hero-social reveal d3">
         <div class="h-avs">
@@ -122,3 +125,155 @@
     </div>
   </div>
 </div>
+
+{#if showAiModal}
+  <div class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-icon">✨</div>
+      <h3 class="modal-title">AI Conversion Engine</h3>
+      <p class="modal-desc">To unlock advanced AI-powered language-to-language translation paths, please enter your secure API Key.</p>
+      
+      <input 
+        type="password" 
+        class="modal-input" 
+        placeholder="Enter API Key (e.g. sk-...)" 
+        bind:value={apiKey}
+      />
+      
+      <div class="modal-actions">
+        <button class="modal-btn cancel" onclick={() => showAiModal = false}>Cancel</button>
+        <button class="modal-btn continue" onclick={() => { showAiModal = false; changePage('get-started'); }}>Authorize & Continue →</button>
+      </div>
+    </div>
+  </div>
+{/if}
+
+<style>
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease;
+  }
+  
+  .modal-box {
+    background: #fff;
+    width: 100%;
+    max-width: 420px;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(0,0,0,0.05);
+    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  :global(.dark-theme) .modal-box {
+    background: #111;
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+
+  .modal-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .modal-title {
+    font-size: 20px;
+    font-family: var(--disp);
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  
+  .modal-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+
+  .modal-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-family: var(--code);
+    font-size: 13px;
+    border: 1px solid var(--bdr);
+    border-radius: 8px;
+    background: var(--off);
+    color: var(--ink);
+    margin-bottom: 24px;
+    outline: none;
+    transition: 0.2s;
+  }
+  
+  .modal-input:focus {
+    border-color: var(--green);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 192, 122, 0.15);
+  }
+  
+  :global(.dark-theme) .modal-input:focus {
+    background: #000;
+  }
+
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  .modal-btn {
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    border: none;
+    font-family: var(--disp);
+  }
+
+  .modal-btn.cancel {
+    background: transparent;
+    color: var(--muted);
+  }
+  
+  .modal-btn.cancel:hover {
+    color: var(--ink);
+    background: rgba(0,0,0,0.05);
+  }
+  
+  :global(.dark-theme) .modal-btn.cancel:hover {
+    background: rgba(255,255,255,0.05);
+  }
+
+  .modal-btn.continue {
+    background: var(--green);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 192, 122, 0.25);
+  }
+  
+  .modal-btn.continue:hover {
+    filter: brightness(1.1);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+</style>
