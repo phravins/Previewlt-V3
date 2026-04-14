@@ -1,3 +1,8 @@
+<script lang="ts">
+  import { getContext } from 'svelte';
+  const changePage = getContext<((page: string) => void)>('changePage');
+</script>
+
 <div class="cta-section">
   <div class="cta-card reveal">
     <div class="cta-bg"></div>
@@ -10,7 +15,7 @@
       <p class="cta-p">No install. No config. No waiting. Drop your file and see it live — right now, right here, in your browser.</p>
     </div>
     <div class="cta-right">
-      <button class="cta-btn-p">Open PreviewIt free →</button>
+      <button class="cta-btn-p" onclick={() => changePage('get-started')}>Open PreviewIt free →</button>
       <button class="cta-btn-s">View documentation</button>
       <div class="cta-note">MIT licensed · Built in India 🇮🇳</div>
     </div>
