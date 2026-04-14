@@ -1,6 +1,10 @@
 <script lang="ts">
+  import { getContext } from 'svelte';
+  
   let hmc = $state(8);
   let scaleStyle = $state("");
+
+  const changePage = getContext<((page: string) => void)>('changePage');
 
   function adjustHmc(delta: number) {
     hmc = Math.max(0, hmc + delta);
@@ -27,8 +31,8 @@
         Drop any <strong>HTML, JSX, TSX, Vue, Svelte</strong> file and see it rendered live — inside a browser frame, tablet, or phone mockup. No npm, no terminal, no waiting.
       </p>
       <div class="hero-ctas reveal d2">
-        <button class="hero-cta-p">Open preview tool →</button>
-        <button class="hero-cta-s">✦ Try the converter</button>
+        <button class="hero-cta-p" onclick={() => changePage('get-started')}>Open preview tool →</button>
+        <button class="hero-cta-s" onclick={() => changePage('get-started')}>✦ Try the converter</button>
       </div>
       <div class="hero-social reveal d3">
         <div class="h-avs">
