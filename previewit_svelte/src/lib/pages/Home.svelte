@@ -4,7 +4,8 @@
   import HowItWorks from '../components/HowItWorks.svelte';
   import Features from '../components/Features.svelte';
   import Stats from '../components/Stats.svelte';
-  import Testimonials from '../components/Testimonials.svelte';
+  import Comparison from '../components/Comparison.svelte';
+  import Ecosystem from '../components/Ecosystem.svelte';
   import Cta from '../components/Cta.svelte';
 
   interface Props {
@@ -19,6 +20,7 @@
   <HowItWorks />
   <Features {showToast} />
   <Stats />
-  <Testimonials />
+  <Comparison />
+  <Ecosystem />
   <Cta />
 </div>
