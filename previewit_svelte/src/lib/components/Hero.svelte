@@ -22,10 +22,7 @@
 <div style="max-width:1200px;margin:0 auto;padding:0 40px">
   <div class="hero" style="max-width:none;padding:72px 0 80px">
     <div>
-      <div class="hero-tag reveal">
-        <div class="hero-tag-icon">✓</div>
-        <span>Zero install · Zero config · 100% free</span>
-      </div>
+
       <h1 class="hero-title reveal d1">
         Preview web code<br>
         <span class="accent">instantly.</span><br>
