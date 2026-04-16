@@ -47,6 +47,7 @@
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <a class="nav-link {activePage === 'changelog' ? 'active' : ''}" onclick={() => changePage('changelog')}>Changelog</a>
+    <a class="nav-link" href="https://github.com/phravins/Previewlt-V3" target="_blank" rel="noopener noreferrer">GitHub</a>
   </div>
   <div class="nav-right">
     <button class="theme-toggle" aria-label="Toggle theme" onclick={toggleTheme}>
@@ -58,7 +59,7 @@
         <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       {/if}
     </button>
-    <div class="nav-pill"><div class="nav-pill-dot"></div>v1.0 beta</div>
+
     <button class="btn-sign" onclick={() => changePage('sign-in')}>Sign in</button>
     <button class="btn-start" onclick={() => changePage('get-started')}>Get started <span class="arr">→</span></button>
   </div>
