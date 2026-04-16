@@ -53,7 +53,12 @@ npm run dev
 
 Finally, open your web browser and navigate seamlessly to `http://localhost:5173` to start previewing immediately.
 
+##  Documentation
+For detailed configuration and advanced usage, please refer to our [documentation portal](http://localhost:5173/docs).
+
 ---
 
 ##  License
+MIT licensed • Built in India 🇮🇳
+
 A development tool built to save you time. Distributed freely under the MIT License.
